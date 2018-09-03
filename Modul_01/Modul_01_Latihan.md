@@ -20,7 +20,11 @@ Modul01 Jaka Sembung (salah)
 
 # Program `Hello World` dengan C++ menggunakan CodeBlocks
 
-New -> Project -> Empty Project
+Buat project kosong pada CodeBlocks dengan nama `Hello01`:
+
+1. Menu: New -> Project -> Empty Project
+
+2. Konfigurasi project:
 
 **Project Title**: Hello01
 
@@ -32,18 +36,15 @@ New -> Project -> Empty Project
 
 Next
 
-Compiler GCC, check semua, jangan ubah konfigurasi
+3. `Compiler GCC`, ceklis semua, jangan ubah konfigurasi. Kemudian `Finish`
 
-Finish
+3. Tambahkan file baru: `New` -> `Files` -> `Category C/C++ source` -> C++ ->
+   Masukkan path file ->
+   `Add file to active projects.` Ceklis semua pilihan `Debug/Release` -> `Finish`
 
-New file
+4. Build and Run (F9)
 
-
-
-Build and Run (F9)
-
-
-Buat project kosong pada CodeBlocks dengan nama `Hello01`, kemudian tambahkan file
+Kemudian tambahkan file
 bernama `Hello01.cpp` dengan isi berikut:
 
 ```c++
@@ -60,9 +61,78 @@ int main()
 }
 ```
 
-Tugas
+## Tugas
 
-1. Perhatikan struktur direktori dari Hello01.
+1. Tuliskan output dari program ketika dijalankan.
+
+2. Tuliskan output dari `Build Log` dan `Build messages`
+
+3. Berikut ini adalah struktur dari direktori `Hello01` ketika Anda
+   telah berhasil membangun dan menjalankan proyek `Hello01`:
+
+```
+Hello01
+├── bin
+│   └── Debug
+│       └── Hello01
+├── Hello01.cbp
+├── Hello01.cpp
+├── Hello01.depend
+├── Hello01.layout
+└── obj
+    └── Debug
+        └── Hello01.o
+```
+
+   Buat file baru dengan nama `Hello02.cpp` dalam direktori ini sehingga
+   struktur direktorinya menjadi sebagai berikut:
+
+```
+Hello01/
+├── bin
+│   └── Debug
+│       └── Hello01
+├── Hello01.cbp
+├── Hello01.cpp
+├── Hello01.depend
+├── Hello01.layout
+├── Hello02.cpp    <--- File yang baru dibuat
+└── obj
+    └── Debug
+        └── Hello01.o
+```
+
+  Isi file `Hello02.cpp` ini sebagai berikut:
+
+```c++
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout << "Hello this is MI2101" << endl;
+  return 0;
+}
+```
+
+   Kemudian coba build kembali project yang Anda buat. Apa yang terjadi ?
+   Tuliskan keluaran dari program apabila project ini berhasil dibangun.
+   Jika terjadi kesalahan, apa yang harus dilakukan?
+
+4. Tutup semua jendela CodeBlocks.
+   Sekarang buka File Explorer di Ubuntu, kemudian buka direktori di mana
+   project CodeBlocks ini Anda buat.
+   
+   Bandingkan dua kasus berikut.
+   
+   - CodeBlocks digunakan untuk membuka file **Hello01.cpp**
+   
+   - CodeBlocks digunakan untuk membuka file **Hello01.cbp**
+   
+   (Untuk masing-masing kasus CodeBlocks harus ditutup terlebih dahulu)
+
+   Adakah perbedaan yang Anda amati? Apakah perbedaan antara `Hello01.cpp`
+   dengan `Hello01.cbp` ?
+
 
 
 # Program `Hello World` dengan C++ menggunakan baris perintah
@@ -140,15 +210,15 @@ diperlukan untuk menjalankan program `Hello01`
 
 
 
-
-
-# Melakukan perhitungan arimetika sederhana
+# Melakukan perhitungan arimatika sederhana
 
 Buat project CodeBlocks baru dengan nama `Aritmatika01` dan tambahkan file
 `.cpp` pada proyek tersebut dengan nama `aritmatika01.cpp`.
 
 **Alternatif lain** Untuk Anda yang lebih senang bekerja dengan
 terminal, buat direktori `Aritmatika01` dan file `aritmatika01.cpp`.
+
+Berikut ini adalah kode sumber untuk `aritmatika01.cpp`.
 
 ```c++
 // Nama:
@@ -163,26 +233,49 @@ int main()
   a = 123;
   b = 456;
 
+  // Tampilkan nilai a and b ke layar
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+
+  // Lakukan perhitungan tambah, kurang, kali, dan bagi
   c = a + b;
-  cout << a << " + " << b << " = " << c << endl;
+  cout << "a + b = " << c << endl;
+  
+  c = a - b;
+  cout << "a - b = " << c << endl;
+
+  c = a * b;
+  cout << "a * b = " << c << endl;
+
+  c = a / b;
+  cout << "a / b = " << c << endl;
 
   return 0;
 }
 ```
 
-# Latihan A
+1. Tuliskan keluaran dari program tersebut ketika dijalankan.
+
+2. Apakah ada hasil perhitungan yang Anda anggap salah ?
+   Bagaimana cara memperbaikinya ?
+
+
+# Latihan dan Eksplorasi (Bagian A)
 
 Pada kerjakan latihan ini dengan menggunakan CodeBlocks atau baris perintah
 pada terminal.
 
-Untuk setiap percobaan, tuliskan pesan kesalahan (jika ada)
-yang tampil pada Build Log
+Untuk setiap percobaan, 
 serta berikan berikan penjelasan dan/atau komentar Anda.
 
-## A.1 Lupa memberikan tanda ; pada akhir statement
+Cek apakah kode berikut ini dapat dibuild atau dijalankan tanpa
+ada kesalahan (*syntax error*).
 
-Terdapat tiga tanda `;` coba hilangkan satu saja dan amati apa yang terjadi.
-Misalnya pada program ini tanda `;` setelah `endl` dihapus.
+Tuliskan pesan kesalahan (jika ada) yang tampil pada Build Log
+(jika menggunakan CodeBlocks) atau terminal, jelaskan kesalahan
+yang terjadi kemudian perbaiki.
+
+1. Kode sumber
 
 ```c++
 #include <iostream>
@@ -195,10 +288,7 @@ int main()
 }
 ```
 
-
-## Mengganti << dengan <
-
-Kode sumber
+2. Kode sumber
 
 ```c++
 #include <iostream>
@@ -211,54 +301,46 @@ int main()
 }
 ```
 
-## Lupa menggunakan #include <iostream>
-
-Kode sumber
+3. Kode sumber
 
 ```c++
 using namespace std;
 
 int main()
 {
-  cout << "Hello World" << endl
+  cout << "Hello World" << endl;
   return 0;
 }
 ```
 
 
 
-## Lupa menggunakan using namespace std
-
-Kode sumber:
+4. Kode sumber:
 
 ```c++
 #include <iostream>
 
 int main()
 {
-  cout << "Hello World" << endl
+  cout << "Hello World" << endl;
   return 0;
 }
 ```
 
-### Menggunakan std::
-
-Kode sumber:
+5. Kode sumber:
 
 ```c++
 #include <iostream>
 
 int main()
 {
-  std::cout << "Hello World" << std::endl
+  std::cout << "Hello World" << std::endl;
   return 0;
 }
 ```
 
 
-### Menghilangkan statement return 0
-
-Kode sumber:
+6. Kode sumber:
 
 ```c++
 #include <iostream>
@@ -277,29 +359,85 @@ Referensi berikut ini boleh dibaca:
 2. http://www.cplusplus.com/forum/beginner/24461/
 
 
-
-# Soal dan Tugas
-
-1. Perbaiki kode berikut ini
-
-Kode salah:
+7. Kode sumber
 
 ```c++
-#include <iostream>
+#include <stdio.h>
 
 int main()
 {
-  int a = 21;
-  int b = 34:
-  int c = a*b;
-  cout >> c >> endl;
-
+  printf("Hello World\n");
   return 0;
 }
 ```
 
-Kode yang diperbaiki:
+8. Kode sumber
 
 ```c++
-// Kode yang diperbaiki ...
+#include <cstdio>
+
+int main()
+{
+  printf("Hello World\n");
+  return 0;
+}
+```
+
+
+# Latihan dan eksplorasi (Bagian B)
+
+1. Modifikasi program pada proyek `Aritmatika01` agar menghasilkan
+   output sebagai berikut (dengan menggunakan nilai a dan b yang sama)
+
+```
+123 + 456 = 579
+123 - 456 = -333
+123 * 456 = 56088
+123 / 456 = 0
+```
+
+2. Lengkapi program berikut ini. Program ini bertujuan untuk mencari akar
+   dari persamaan kuadrat.
+   
+$$
+ax^2 + bx + c = 0
+$$
+
+$$
+x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+$$
+
+  Untuk sementara, program ini hanya memperhitungkan kasus $b^2 - 4ac \geq 0$
+  
+  Kasus yang lebih umum akan dipelajari di Modul02 (percabangan dengan `if`).
+
+
+```c++
+#include <iostream>
+#include <cmath>  // diperlukan untuk sqrt
+using namespace std;
+int main()
+{
+  ....
+  
+  a =  1.2;
+  b =  1.3;
+  c = -4.0
+  
+  // Hitung diskriminan
+  .... d;
+  d = ....;
+  // Tampilkan nilai diskriminan
+  cout << ....
+
+  float x1, x2;
+  x1 = ....;
+  x2 = ....;
+
+  // Tampilkan nilai x1 dan x2
+  cout << "x1 = " << x1 << endl;
+  cout << "x2 = " << x2 << endl;
+
+  return 0;
+}
 ```
