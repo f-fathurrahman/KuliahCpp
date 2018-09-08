@@ -1,0 +1,483 @@
+\documentclass[a4paper,11pt]{extarticle}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+
+\usepackage{fontspec}
+%\setmainfont{DejaVu Serif}
+%\setsansfont{DejaVu Sans}
+%\setmonofont{DejaVu Sans Mono}
+%\setmonofont{Menlo}
+%\setmainfont{FreeSerif}
+%\setsansfont{FreeSans}
+\setmonofont{FreeMono}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.5em}
+
+\usepackage{textcomp}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+
+\usepackage{minted}
+\newminted{cpp}{breaklines,fontsize=\small}
+\newminted{text}{breaklines,fontsize=\small}
+
+\definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
+\usepackage{mdframed}
+
+\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
+\AfterEndEnvironment{minted}{\end{mdframed}}
+
+\title{
+MI2102\\
+Praktikum Teknik Komputasi\\
+Modul 1}
+\author{Fadjar Fathurrahman}
+\date{2018}
+
+\begin{document}
+\maketitle
+
+\section{Tujuan}
+\begin{itemize}
+\item Dapat membuat project C/C++ sederhana dengan menggunakan CodeBlocks
+\item Dapat membuat kode sumber C/C++ dengan menggunakan CodeBlocks
+  atau editor teks
+\item Dapat melakukan proses build project C/C++ pada CodeBlocks
+\item Mengenal baris perintah (*command line* pada Linux) serta beberapa perintah sederhana
+\item Dapat melakukan kompilasi program dengan menggunakan baris perintah pada Linux
+\item Mengenal beberapa kesalahan umum pada pembuatan program serta solusinya
+\item Dapat membuat program C++ sederhana untuk melakukan perhitungan matematika
+sederhana
+\end{itemize}
+
+\section{Perangkat lunak yang diperlukan}
+\begin{itemize}
+\item Linux OS
+\item CodeBlocks yang telah dikonfigurasi untuk kompiler GNU C/C++
+\item Terminal emulator dengan *bash* sebagai shell (baris perintah)
+\item Editor teks seperti \texttt{gedit}
+\end{itemize}
+
+
+\section{Petunjuk dasar}
+
+Buat direktori (folder) dengan format \texttt{Modul01\_NIM\_Nama}. Semua
+pekerjaan Anda akan dilakukan dalam direktori ini.
+
+\textbf{Jangan gunakan spasi jika nama Anda lebih dari satu kata}
+
+\textbf{Gunakan underscore \_ sebagai pengganti spasi}
+
+Contoh:
+\begin{minted}[fontsize=\small]{text}
+Modul01_Jaka_Sembung (benar)
+
+Modul01_Jaka Sembung (salah)
+Modul01 Jaka Sembung (salah)
+\end{minted}
+
+\section{Program `Hello World` dengan menggunakan CodeBlocks}
+
+Buatlan sebuah proyek kosong pada CodeBlocks dengan nama \texttt{Hello01}
+dengan langkah sebagai berikut:
+\begin{enumerate}
+\item Pada menu \textsf{New} \textrightarrow \textsf{Project}
+      \textrightarrow \textsf{Empty Project}
+%
+\item Konfigurasi project:
+  \begin{itemize}
+  \item \textsf{Project Title}: Hello01
+  \item \textsf{Folder to create project in}: \texttt{/home/students/Modul01\_Jaka\_Sembung/}
+  \item \textsf{Project filename}: Hello01.cbp
+  \item \textsf{Resulting filename}: \\
+  \texttt{/home/students/Modul01\_Jaka\_Sembung/Hello01/Hello01.cbp}
+  \item Kemudian klik \textsf{Next}
+  \end{itemize}
+  \textsf{Next}.
+%
+\item Pastikan bahwa yang digunakan adalah \textsf{Compiler GCC}
+ceklis semua, jangan ubah konfigurasi. Kemudian \textsf{Finish}
+%
+\item Tambahkan file baru: menu 
+      \textsf{New} \textrightarrow \textsf{Files} \textrightarrow
+      \textsf{Category C/C++ source}
+      \textrightarrow \textsf{C++} \textrightarrow
+      Masukkan path file \textrightarrow
+      \textrightarrow{Add file to active projects}.
+      Ceklis semua pilihan \textsf{Debug/Release} dan \textsf{Finish}.
+      Nama file: \textsf{Hello01.cpp} dengan isi sebagai berikut
+%
+\begin{minted}[fontsize=\small]{cpp}
+// Nama:
+// NIM:
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  cout << "Hello World" << endl;
+  return 0;
+}
+\end{minted}
+%
+\end{enumerate}
+
+Kemudian \textsf{Build (F9)}. Pastikan bahwa tidak ada kesalahan pada saat proses ini.
+
+\subsection{Tugas}
+
+\begin{enumerate}
+\item Tuliskan output dari program ketika dijalankan.
+%
+\item Tuliskan output dari \textsf{Build Log} dan \textsf{Build messages}.
+%
+\item Berikut ini adalah struktur dari direktori `Hello01` ketika Anda
+      telah berhasil membangun dan menjalankan proyek `Hello01`:
+%
+\begin{minted}[fontsize=\small]{text}
+Hello01
+├── bin
+│   └── Debug
+│       └── Hello01
+├── Hello01.cbp
+├── Hello01.cpp
+├── Hello01.depend
+├── Hello01.layout
+└── obj
+    └── Debug
+        └── Hello01.o
+\end{minted}
+   Buat file baru dengan nama `Hello02.cpp` dalam direktori ini sehingga
+   struktur direktorinya menjadi sebagai berikut:
+%
+\begin{minted}[fontsize=\small]{text}
+Hello01/
+├── bin
+│   └── Debug
+│       └── Hello01
+├── Hello01.cbp
+├── Hello01.cpp
+├── Hello01.depend
+├── Hello01.layout
+├── Hello02.cpp    <--- File yang baru dibuat
+└── obj
+    └── Debug
+        └── Hello01.o
+\end{minted}
+%
+  Isi file \textsf{Hello02.cpp} ini sebagai berikut:
+%
+\begin{minted}[fontsize=\small]{cpp}
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout << "Hello this is MI2101" << endl;
+  return 0;
+}
+\end{minted}
+%
+   Kemudian coba build kembali project yang Anda buat. Apa yang terjadi ?
+   Tuliskan keluaran dari program apabila project ini berhasil dibangun.
+   Jika terjadi kesalahan, apa yang harus dilakukan?
+%
+\item Tutup semua jendela CodeBlocks.
+      Sekarang buka File Explorer di Ubuntu, kemudian buka direktori di mana
+      project CodeBlocks ini Anda buat.
+      %
+      Bandingkan dua kasus berikut.
+      \begin{itemize}  
+      \item CodeBlocks digunakan untuk membuka file \textsf{Hello01.cpp}
+      \item CodeBlocks digunakan untuk membuka file \textsf{Hello01.cbp}
+      \end{itemize}
+      (Untuk masing-masing kasus CodeBlocks harus ditutup terlebih dahulu)
+      %
+      Adakah perbedaan yang Anda amati? Apakah perbedaan antara \textsf{Hello01.cpp}
+      dengan \textsf{Hello01.cbp} ?
+
+\end{enumerate}
+
+\section{Program `Hello World` dengan menggunakan baris perintah}
+
+Buka Terminal (program khusus untuk menjalankan baris perintah).
+
+Perhatikan demonstrasi yang dilakukan di depan kelas.
+
+Catat perintah-perintah yang telah didemonstrasikan dalam tabel berikut ini.
+
+{\centering
+\begin{tabular}{|p{0.4\textwidth}|p{0.6\textwidth}|}
+\hline
+Perintah & Penjelasan mengenai perintah (keluaran dan/atau apa yang dilakukan) \\
+\hline
+\texttt{ls} & \\
+\texttt{pwd} & \\
+dan seterusnya & \\
+\hline
+\end{tabular}
+}
+
+Lengkapi langkah-langkah (dan perintah yang digunakan pada terminal) berikut ini yang
+diperlukan untuk menjalankan program \textsf{Hello01}. Kita akan menggunakan
+file \texttt{Hello01.cpp} yang sudah kita buat pada CodeBlocks sebelumnya.
+
+\begin{enumerate}
+\item Cek direktori kerja awal ketika membuka terminal.
+   Perintah yang diperlukan adalah ....
+   Direktori kerja awal adalah ....
+%
+\item Tentukan lokasi file \texttt{.cpp} yang ingin dibangun
+   (\textsf{build = compile + link}). Lokasi file tersebut adalah ....
+%
+\item Ubah direktori kerja ke direktori yang berisi file \texttt{.cpp} yang telah
+   disebutkan sebelumnya.
+   Direktori tersebut adalah ....
+   Perintah yang diperlukan adalah ....
+%
+\item Pastikan bahwa perintah yang dilakukan pada langkah 3 sukses dan kita
+   tidak melakukan kesalah dengan cara mengecek direktori kerja sekarang.
+   Perintah yang diperukan adalah ....
+   Direktori kerja sekarang adalah ....
+%
+\item Pastikan bahwa file \texttt{.cpp} tersebut ada pada direktori kerja.
+   Hal ini dapat dilakukan dengan cara melihat daftar file dan subdirektori apa
+   saja yang ada pada direktori saat ini.
+   Perintah yang diperlukan adalah ....
+   File-file yang ada pada direktori kerja adalah ....
+%
+\item Bangun (\textsf{Build}) program dengan menggunakan perintah ....
+%
+\item Pastikan proses pada langkan sebelumnya telah berhasil (tidak ada kesalahan atau pesan error).
+   Cek apakah ada file baru yang dihasilkan.
+   Jika ada file tersebut bernama ....
+%
+\item Eksekusi program yang dihasilkan pada terminal.
+   %
+   Perintah yang diperlukan adalah ....
+    %
+   Hasil/output dari eksekusi program
+   %
+   ....
+\end{enumerate}
+
+
+\section{Perhitungan arimatika sederhana}
+
+Buat project CodeBlocks baru dengan nama \textsf{Aritmatika01} dan tambahkan file
+C++ pada proyek tersebut dengan nama \textsf{aritmatika01.cpp}.
+
+\textbf{Alternatif} Untuk Anda yang lebih senang bekerja dengan
+terminal, buat direktori \textsf{Aritmatika01} dan file \texttt{aritmatika01.cpp}.
+
+Berikut ini adalah kode sumber untuk \texttt{aritmatika01.cpp}.
+
+\begin{minted}[fontsize=\small]{cpp}
+// Nama:
+// NIM:
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int a, b, c;
+
+  a = 123;
+  b = 456;
+
+  // Tampilkan nilai a and b ke layar
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+
+  // Lakukan perhitungan tambah, kurang, kali, dan bagi
+  c = a + b;
+  cout << "a + b = " << c << endl;
+  
+  c = a - b;
+  cout << "a - b = " << c << endl;
+
+  c = a * b;
+  cout << "a * b = " << c << endl;
+
+  c = a / b;
+  cout << "a / b = " << c << endl;
+
+  return 0;
+}
+\end{minted}
+
+\subsection{Tugas}
+\begin{enumerate}
+\item Tuliskan keluaran dari program tersebut ketika dijalankan.
+%
+\item Apakah ada hasil perhitungan yang Anda anggap salah ?
+      Bagaimana cara memperbaikinya ?
+\end{enumerate}
+
+
+\section{Latihan dan Eksplorasi (Bagian A)}
+
+Pada kerjakan latihan ini dengan menggunakan CodeBlocks atau baris perintah
+pada terminal.
+
+Untuk setiap percobaan, 
+serta berikan berikan penjelasan dan/atau komentar Anda.
+
+Cek apakah kode berikut ini dapat dibuild atau dijalankan tanpa
+ada kesalahan (\textit{syntax error}).
+
+Tuliskan pesan kesalahan (jika ada) yang tampil pada Build Log
+(jika menggunakan CodeBlocks) atau terminal, jelaskan kesalahan
+yang terjadi kemudian perbaiki.
+
+1. Kode sumber
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout << "Hello World" << endl
+  return 0;
+}
+\end{cppcode}
+
+2. Kode sumber
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout < "Hello World" < endl
+  return 0;
+}
+\end{cppcode}
+
+3. Kode sumber
+\begin{cppcode}
+using namespace std;
+int main()
+{
+  cout << "Hello World" << endl;
+  return 0;
+}
+\end{cppcode}
+
+
+4. Kode sumber:
+\begin{cppcode}
+#include <iostream>
+int main()
+{
+  cout << "Hello World" << endl;
+  return 0;
+}
+\end{cppcode}
+
+5. Kode sumber:
+\begin{cppcode}
+#include <iostream>
+int main()
+{
+  std::cout << "Hello World" << std::endl;
+  return 0;
+}
+\end{cppcode}
+
+
+6. Kode sumber:
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout << "Hello World" << endl;
+}
+\end{cppcode}
+
+Referensi berikut ini boleh dibaca:
+\begin{itemize}
+\item \url{https://www.codeproject.com/Questions/693038/why-do-we-have-to-use-return}
+\item \url{http://www.cplusplus.com/forum/beginner/24461/}
+\end{itemize}
+
+7. Kode sumber
+\begin{cppcode}
+#include <stdio.h>
+int main()
+{
+  printf("Hello World\n");
+  return 0;
+}
+\end{cppcode}
+
+8. Kode sumber
+\begin{cppcode}
+#include <cstdio>
+int main()
+{
+  printf("Hello World\n");
+  return 0;
+}
+\end{cppcode}
+
+
+\section{Latihan dan eksplorasi (Bagian B)}
+
+\begin{enumerate}
+\item Modifikasi program pada proyek \textsf{Aritmatika01} agar menghasilkan
+   output sebagai berikut (dengan menggunakan nilai a dan b yang sama)
+%
+\begin{textcode}
+123 + 456 = 579
+123 - 456 = -333
+123 * 456 = 56088
+123 / 456 = 0.269737
+\end{textcode}
+%
+\item Lengkapi program berikut ini. Program ini bertujuan untuk mencari akar
+   dari persamaan kuadrat $ax^2 + bx + c = 0$, yaitu:
+   \begin{equation}
+   x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+   \end{equation}
+   %
+  Untuk sementara, program ini hanya memperhitungkan kasus nilai diskriminan
+  $D = b^2 - 4ac \geq 0$.
+  Kasus yang lebih umum akan dipelajari di Modul 2.
+%
+\begin{cppcode}
+#include <iostream>
+#include <cmath>  // diperlukan untuk sqrt
+using namespace std;
+int main()
+{
+  ....
+  
+  a =  1.2;
+  b =  1.3;
+  c = -4.0
+  
+  // Hitung diskriminan
+  .... d;
+  d = ....;
+  // Tampilkan nilai diskriminan
+  cout << ....
+
+  float x1, x2;
+  x1 = ....;
+  x2 = ....;
+
+  // Tampilkan nilai x1 dan x2
+  cout << "x1 = " << x1 << endl;
+  cout << "x2 = " << x2 << endl;
+
+  return 0;
+}
+\end{cppcode}
+%
+\end{enumerate}
+
+
+\end{document}

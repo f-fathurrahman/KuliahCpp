@@ -2,7 +2,7 @@
 % Tulis nama Anda di sini
 % NIM
 
-# Pentunjuk dasar
+# Petunjuk dasar
 
 Buat direktori (folder) dengan format `Modul01_NIM_Nama`. Semua pekerjaan Anda
 akan dilakukan dalam direktori ini.
@@ -38,7 +38,7 @@ Next
 
 3. `Compiler GCC`, ceklis semua, jangan ubah konfigurasi. Kemudian `Finish`
 
-3. Tambahkan file baru: `New` -> `Files` -> `Category C/C++ source` -> C++ ->
+4. Tambahkan file baru: `New` -> `Files` -> `Category C/C++ source` -> C++ ->
    Masukkan path file ->
    `Add file to active projects.` Ceklis semua pilihan `Debug/Release` -> `Finish`
 
@@ -384,7 +384,7 @@ int main()
 123 + 456 = 579
 123 - 456 = -333
 123 * 456 = 56088
-123 / 456 = 0
+123 / 456 = 0.269737
 ```
 
 2. Lengkapi program berikut ini. Program ini bertujuan untuk mencari akar
