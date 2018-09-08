@@ -42,10 +42,7 @@ Next
    Masukkan path file ->
    `Add file to active projects.` Ceklis semua pilihan `Debug/Release` -> `Finish`
 
-4. Build and Run (F9)
-
-Kemudian tambahkan file
-bernama `Hello01.cpp` dengan isi berikut:
+   Nama file: `Hello01.cpp` dengan isi sebagai berikut
 
 ```c++
 // Nama:
@@ -60,6 +57,8 @@ int main()
   return 0;
 }
 ```
+
+Kemudian Build (F9)
 
 ## Tugas
 
@@ -200,14 +199,6 @@ diperlukan untuk menjalankan program `Hello01`
    Hasil/output dari eksekusi program
 
    ....
-  
-
-
-
-
-
-
-
 
 
 # Melakukan perhitungan arimatika sederhana

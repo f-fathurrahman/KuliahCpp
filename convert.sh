@@ -10,3 +10,5 @@ fi
 pandoc -s $basnam.md -o ${basnam}_GENERATED.tex
 
 pandoc -s $basnam.md -o ${basnam}_GENERATED.docx
+
+pandoc -s $basnam.md -o ${basnam}_GENERATED.odt
