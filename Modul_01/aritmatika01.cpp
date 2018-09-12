@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-  int a, b, c;
+  float a, b, c;
 
   a = 123;
   b = 456;
@@ -17,7 +17,7 @@ int main()
   // Lakukan perhitungan tambah, kurang, kali, dan bagi
   c = a + b;
   cout << "a + b = " << c << endl;
-  
+
   c = a - b;
   cout << "a - b = " << c << endl;
 
