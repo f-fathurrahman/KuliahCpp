@@ -1,0 +1,65 @@
+\documentclass[a4paper,11pt]{extarticle}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+
+\usepackage{fontspec}
+\setmonofont{FreeMono}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.5em}
+
+\usepackage{textcomp}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+
+\usepackage{minted}
+\newminted{cpp}{breaklines,fontsize=\small}
+\newminted{text}{breaklines,fontsize=\small}
+
+\definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
+\usepackage{mdframed}
+
+\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
+\AfterEndEnvironment{minted}{\end{mdframed}}
+
+\title{
+MI2102\\
+Praktikum Teknik Komputasi\\
+Modul 2}
+\author{Fadjar Fathurrahman}
+\date{2018}
+
+\begin{document}
+\maketitle
+
+\section{Tujuan}
+\begin{itemize}
+\item Simple user input
+\item Percabangan dan perulangan
+\item Membuat data plot dengan spreadsheet atau gnuplot
+\end{itemize}
+
+\section{Perangkat lunak yang diperlukan}
+\begin{itemize}
+\item Linux OS
+\item CodeBlocks yang telah dikonfigurasi untuk kompiler GNU C/C++
+\item Terminal emulator dengan \texttt{bash} sebagai shell (baris perintah)
+\item Editor teks seperti \texttt{gedit}
+\item Perangkat lunak untuk membuat plot/grafik:
+\begin{itemize}
+\item Spreadsheet program seperti \textsf{Microsoft Excel} atau \textsf{Libre Office Calc}
+\item \textsf{Gnuplot}
+\end{itemize}
+\end{itemize}
+
+\section{Akar persamaan kuadrat}
+Pada modul
+
+
+\section{Perulangan}
+
+
+
+\end{document}
