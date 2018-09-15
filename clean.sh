@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rm -v *.aux *.log *.out *.exe
+rm -fv *.aux *.log *.out *.exe
