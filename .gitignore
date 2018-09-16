@@ -1,6 +1,8 @@
 *_GENERATED*
 TEMP_*
 
+*.eps
+
 *.swp
 *.swo
 *~

@@ -11,9 +11,9 @@ int main()
   const double xi = 0.0;
   const double xf = 1.0;
   const double L = xf - xi;
-  double delta_x = (xf - xi)/Npoints;
+  double delta_x = L/(Npoints-1);
 
-  for(i = 0; i <= Npoints; i++) {
+  for(i = 0; i < Npoints; i++) {
     x = xi + i*delta_x;
     y1 = sin(2.0*M_PI*x/L);
     y2 = cos(2.0*M_PI*x/L);

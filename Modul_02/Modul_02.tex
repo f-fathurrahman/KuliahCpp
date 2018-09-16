@@ -2,6 +2,8 @@
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
 
+%\usepackage{graphicx}
+
 \usepackage{fontspec}
 \setmonofont{FreeMono}
 
@@ -16,6 +18,7 @@
 
 \usepackage{minted}
 \newminted{cpp}{breaklines,fontsize=\small}
+\newminted{gnuplot}{breaklines,fontsize=\small}
 \newminted{text}{breaklines,fontsize=\small}
 
 \definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
@@ -190,7 +193,133 @@ x2 = -1.05 - 2.62631i
 
 
 \section{Perulangan}
+Dalam bagian ini, kita akan latihan menggunakan konstruksi perulangan \texttt{for}
+untuk melakukan perhitungan berulang. Pada contoh berikut ini dan beberapa
+latihan berikutnya kita akan mempersiapkan data tabular yang akan diplot
+dengan menggunakan \textsf{Gnuplot}. Anda tentu saja dapat menggunakan program
+lain seperti \textsf{Microsoft Excel} atau \textsf{Libre Office Calc}.
+
+Berikut ini adalah contoh program yang akan digunakan untuk menghasilkan data.
+Misalkan nama file yang digunakan adalah \texttt{DataSinCos.cpp}.
+\begin{cppcode}
+#include <cstdio>
+#include <cmath>
+int main()
+{
+  int i;
+  double x, y1, y2;
+  int Npoints = 10;
+  const double xi = 0.0;
+  const double xf = 1.0;
+  const double L = xf - xi;
+  double delta_x = L/(Npoints-1);
+  for(i = 0; i < Npoints; i++) {
+    x = xi + i*delta_x;
+    y1 = sin(2.0*M_PI*x/L);
+    y2 = cos(2.0*M_PI*x/L);
+    printf("%18.10f %18.10f %18.10f\n", x, y1, y2);
+  }
+  return 0;
+}
+\end{cppcode}
+
+Beberapa catatan mengenai kode di atas adalah sebagai berikut.
+\begin{itemize}
+\item Penggunaan \texttt{double}
+\item Penggunaan fungsi \texttt{printf} dan \texttt{\#include <cstdio>}
+\item Penggunaan konstanta \verb|M_PI|
+\end{itemize}
+
+Contoh keluaran dari program ini adalah sebagai berikut.
+\begin{textcode}
+      0.0000000000       0.0000000000       1.0000000000
+      0.1000000000       0.5877852523       0.8090169944
+      0.2000000000       0.9510565163       0.3090169944
+      0.3000000000       0.9510565163      -0.3090169944
+      0.4000000000       0.5877852523      -0.8090169944
+      0.5000000000       0.0000000000      -1.0000000000
+      0.6000000000      -0.5877852523      -0.8090169944
+      0.7000000000      -0.9510565163      -0.3090169944
+      0.8000000000      -0.9510565163       0.3090169944
+      0.9000000000      -0.5877852523       0.8090169944
+      1.0000000000      -0.0000000000       1.0000000000
+\end{textcode}
+
+Anda dapat mencoba membuat plot dari data ini dengan cara mengkopi output tersebut
+ke program spreadsheet.
+Alternatif yang akan kita gunakan pada praktikum ini adalah dengan menggunakan
+program \textsf{Gnuplot}.
+
+Misalkan nama program hasil kompilasi adalah \texttt{DataSinCos}.
+Anda dapat melakukan \textit{redirection} output program ke suatu file
+dengan nama
+\begin{textcode}
+./DataSinCos > sin_cos.dat
+\end{textcode}
+
+Gnuplot adalah program berbasis terminal. Dapat dijalankan secara interaktif
+maupun non-interaktif melalui file \textit{script}.
+
+Buat file berikut ini dengan menggunakan teks editor seperti \textsf{Gedit}
+dan simpanlah dengan name \texttt{do\_plot\_sin\_cos.plt}.
+\begin{gnuplotcode}
+set terminal pdf font "Times New Roman, 14"
+set output "sin_cos.pdf"
+set xlabel "x"
+set ylabel "y"
+set title "sin(x) dan cos(x)" # judul plot
+set key at 0.6,1.0 # Posisi legenda
+set xrange [-0.1 : 1.1]
+set yrange [-1.1 : 1.1]
+plot "sin_cos.dat" using 1:2 with linespoints title "sin(x)" \
+                   pointtype 7 pointsize 0.5,\
+                "" using 1:3 with linespoints title "cos(x)" \
+                   pointtype 7 pointsize 0.5,
+\end{gnuplotcode}
+
+Panggil Gnuplot untuk menjalankan script \texttt{do\_plot\_sin\_cos.plt}.
+\begin{textcode}
+gnuplot do_plot_sin_cos.plt
+\end{textcode}
+
+Hasil plot tersebut dapat dilihat pada gambar berikut.
+
+{\centering
+\includegraphics[scale=1.0]{sin_cos.pdf}
+\par
+}
 
 
+\subsection*{Tugas: Plot fungsi eksponensial}
+
+Buat program seperti di atas untuk fungsi Gaussian berikut ini.
+\begin{equation}
+f(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\end{equation}
+dengan $\sigma > 0$ dan $\mu$ merupakan dua parameter.
+Buatlah plot dua fungsi Gaussian
+dengan parameter masing-masing sebagai berikut:
+$(\mu_{1}=1.0,\sigma_{1}=1.5)$ dan $(\mu_{2}=-2.0,\sigma_{2}=1.0)$.
+Hasil plot tersebut dapat dilihat pada gambar berikut.
+
+{\centering
+\includegraphics[scale=1.0]{TEMP_normal_gaussian.pdf}
+\par}
+
+Anda dapat menggunakan fungsi \texttt{exp} dari \texttt{cmath}
+untuk menghitung eksponensial.
+
+\section{Tugas/Pekerjaan rumah}
+
+\begin{enumerate}
+\item Tinjau kembali program untuk mencari akar-akar persamaan kuadrat dengan input
+$a, b, c$ dari pengguna. Ketika diminta untuk memasukkan nilai-nilai tersebut,
+coba masukkan input yang tidak valid (bukan angka) misalnya huruf \texttt{a}.
+Apa yang terjadi ?
+Jika terjadi kesalahan bagaimana cara memperbaikinya ?
+%
+\item Deret Fourier
+%
+\end{enumerate}
 
 \end{document}
