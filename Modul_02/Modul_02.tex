@@ -277,7 +277,7 @@ plot "sin_cos.dat" using 1:2 with linespoints title "sin(x)" \
                    pointtype 7 pointsize 0.5,
 \end{gnuplotcode}
 
-Panggil Gnuplot untuk menjalankan script \texttt{do\_plot\_sin\_cos.plt}.
+Panggil \textsf{Gnuplot} untuk menjalankan script \texttt{do\_plot\_sin\_cos.plt}.
 \begin{textcode}
 gnuplot do_plot_sin_cos.plt
 \end{textcode}
@@ -290,7 +290,7 @@ Hasil plot tersebut dapat dilihat pada gambar berikut.
 }
 
 
-\subsection*{Tugas: Plot fungsi eksponensial}
+\subsection{Tugas: Plot fungsi eksponensial}
 
 Buat program seperti di atas untuk fungsi Gaussian berikut ini.
 \begin{equation}
@@ -309,6 +309,13 @@ Hasil plot tersebut dapat dilihat pada gambar berikut.
 Anda dapat menggunakan fungsi \texttt{exp} dari \texttt{cmath}
 untuk menghitung eksponensial.
 
+\subsection{Tugas: Plot fungsi sinc}
+Lakukan sesuai dengan tugas sebelumnya namun untuk fungsi berikut ini:
+\begin{equation}
+f(x) = \frac{\sin(\pi x)}{\pi x}
+\end{equation}
+Lakukan dengan menggunakan \texttt{NptsPlot} bilangan ganjil, misalnya 201.
+
 \section{Tugas/Pekerjaan rumah}
 
 \begin{enumerate}
@@ -318,7 +325,27 @@ coba masukkan input yang tidak valid (bukan angka) misalnya huruf \texttt{a}.
 Apa yang terjadi ?
 Jika terjadi kesalahan bagaimana cara memperbaikinya ?
 %
-\item Deret Fourier
+\item Buatlah visualisasi untuk ekpansi deret Fourier berikut ini.
+  \begin{enumerate}
+  %
+  \item Gelombang segitiga
+  \begin{equation}
+  f(x) = \frac{8}{\pi^2} \sum_{n=1,3,5,\ldots}^{\infty}
+  \frac{(-1)^{(n-1)/2}}{n^2}\sin\left( \frac{n\pi x}{L} \right)
+  \end{equation}
+  %
+  \item Gelombang gergaji
+  \begin{equation}
+  f(x) = \frac{1}{2} - \frac{1}{\pi}\sum_{n=1}^{\infty}
+  \frac{1}{n}\sin\left( \frac{n\pi x}{L} \right)
+  \end{equation}
+  %
+  \item Gelombang kotak
+  \begin{equation}
+  f(x) = \frac{4}{\pi}\sum_{n=1,3,5}^{\infty}
+  \frac{1}{n} \sin\left( \frac{n\pi x}{L} \right)
+  \end{equation}
+  \end{enumerate}
 %
 \end{enumerate}
 
