@@ -55,7 +55,138 @@ Modul 2}
 \end{itemize}
 
 \section{Akar persamaan kuadrat}
-Pada modul
+Pada modul sebelumnya kita telah membuat program sederhana untuk menghitung
+akar-akar dari persamaan kuadrat
+\begin{equation}
+ax^2 + bx + c = 0
+\label{eq:pers_kuadrat}
+\end{equation}
+$a, b, c$ adalah bilangan real, dengan batasan bahwa $D = b^2 - 4ac >= 0$.
+Pada bagian ini, kita akan memperbaiki program sebelumnya dengan
+membolehkan kasus $D < 0$. Pada kasus ini, akar-akar dari persamaan
+\ref{eq:pers_kuadrat} dapat dinyatakan sebagai:
+\begin{equation}
+x_{1,2} = -\frac{b}{2a} \pm \frac{\sqrt{-D}}{2a}\imath
+\end{equation}
+Dari persamaan di atas dapat dilihat bahwa $x_{1}$ dan $x_{2}$ adalah
+pasangan konjugat kompleks.
+
+\subsection{Tugas: akar-akar real dan imajiner}
+
+Buatlah program untuk menghitung akar-akar dari persamaan kuadrat
+seperti pada Modul 1, namun juga memperhitungkan kasus diskriminan negatif
+(akar-akar kompleks).
+Anda dapat menggunakan konstruksi \texttt{if-else} pada C++.
+Program berikut ini dapat Anda lengkapi sebagai panduan.
+
+\begin{cppcode}
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+  float a, b, c;
+  // berikan nilai a, b, dan c di sini
+  a = ...;
+  b = ...;
+  c = ...;
+  // Tampilkan pesan ke layar
+  cout << "Mencari akar-akar persamaan kuadrat" << endl;
+  cout << endl;
+  cout << "a*x^2 + b*x + c = 0" << endl;
+  cout << endl;
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+  cout << "c = " << c << endl;
+  cout << endl;
+  // Hitung diskriminan di sini
+  float D;
+  D = ....;
+  // Tampilkan nilai diskriminan
+  ....
+  // Deklarasi variabel
+  ....
+  if( D >= 0.0 ) { // akar real
+    x1 = ....;
+    x2 = ....;
+    cout << "Akar-akar real:" << endl;
+    .... // tampilkan x1 dan x2
+  }
+  else { // akar imajiner
+    ....
+    cout << "Akar-akar imajiner:" << endl;
+    ....
+  }
+  return 0;
+}
+\end{cppcode}
+
+Contoh keluaran program di atas untuk kasus akar-akar real.
+\begin{textcode}
+Mencari akar-akar persamaan kuadrat
+
+a*x^2 + b*x + c = 0
+
+a = 2
+b = 1
+c = -4
+
+D = 33
+
+Akar-akar real:
+
+x1 = 1.18614
+x2 = -1.68614
+\end{textcode}
+
+Contoh keluaran program di atas untuk kasus akar-akar imajiner.
+\begin{textcode}
+Mencari akar-akar persamaan kuadrat
+
+a*x^2 + b*x + c = 0
+
+a = 2
+b = 1
+c = 4
+
+D = -31
+
+Akar-akar imajiner:
+
+x1 = -0.25 + 1.39194i
+x2 = -0.25 - 1.39194i
+\end{textcode}
+
+
+\subsection{Tugas: akar persamaan kuadrat dengan input dari pengguna}
+
+Modifikasi program pada tugas sebelumnya agar dengan membaca input
+nilai $a, b, c$ dari pengguna secara interaktif. Anda
+dapat menggunakan pernyataan \texttt{cin} pada C++.
+
+Contoh keluaran dari program:
+\begin{textcode}
+Masukkan nilai a: 1.0
+Masukkan nilai b: 2.1
+Masukkan nilai c: 8.0
+
+Mencari akar-akar persamaan kuadrat
+
+a*x^2 + b*x + c = 0
+
+a = 1
+b = 2.1
+c = 8
+
+D = -27.59
+
+Akar-akar imajiner:
+
+x1 = -1.05 + 2.62631i
+x2 = -1.05 - 2.62631i
+\end{textcode}
 
 
 \section{Perulangan}

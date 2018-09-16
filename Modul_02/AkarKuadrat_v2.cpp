@@ -9,7 +9,7 @@ int main()
   
   a = 2.0;
   b = 1.0;
-  c = -4.0;
+  c = 4.0;
 
   cout << "Mencari akar-akar persamaan kuadrat" << endl;
   cout << endl;
