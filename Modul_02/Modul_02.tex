@@ -39,9 +39,10 @@ Modul 2}
 
 \section{Tujuan}
 \begin{itemize}
-\item Simple user input
-\item Percabangan dan perulangan
-\item Membuat data plot dengan spreadsheet atau gnuplot
+\item Mampu membuat program C++ sederhana dengan percabangan dan perulangan
+\item Mampu membuat program C++ yang menangani input sederhana dari penggunan
+\item Membuat data plot dengan program eksternal seperti \textsf{Microsoft Excel},
+\textsf{Libre Office Calc} dan \textsf{Gnuplot}
 \end{itemize}
 
 \section{Perangkat lunak yang diperlukan}
@@ -208,12 +209,12 @@ int main()
 {
   int i;
   double x, y1, y2;
-  int Npoints = 10;
+  int NptsPlot = 10;
   const double xi = 0.0;
   const double xf = 1.0;
   const double L = xf - xi;
-  double delta_x = L/(Npoints-1);
-  for(i = 0; i < Npoints; i++) {
+  double delta_x = L/(NptsPlot-1);
+  for(i = 0; i < NptsPlot; i++) {
     x = xi + i*delta_x;
     y1 = sin(2.0*M_PI*x/L);
     y2 = cos(2.0*M_PI*x/L);
@@ -225,9 +226,9 @@ int main()
 
 Beberapa catatan mengenai kode di atas adalah sebagai berikut.
 \begin{itemize}
-\item Penggunaan \texttt{double}
+\item Tipe data \texttt{double} digunakan agar hasil perhitungan lebih teliti.
 \item Penggunaan fungsi \texttt{printf} dan \texttt{\#include <cstdio>}
-\item Penggunaan konstanta \verb|M_PI|
+\item Konstanta \verb|M_PI| digunakan sebagai bilangan $\pi$
 \end{itemize}
 
 Contoh keluaran dari program ini adalah sebagai berikut.
@@ -257,8 +258,10 @@ dengan nama
 ./DataSinCos > sin_cos.dat
 \end{textcode}
 
-Gnuplot adalah program berbasis terminal. Dapat dijalankan secara interaktif
-maupun non-interaktif melalui file \textit{script}.
+\textsf{Gnuplot} adalah program berbasis terminal. Program ini dapat dijalankan
+secara interaktif maupun non-interaktif melalui file \textit{script}.
+Dalam praktikum ini kita
+akan lebih banyak menggunakan mode non-iteraktif dengan menggunakan \textit{script}
 
 Buat file berikut ini dengan menggunakan teks editor seperti \textsf{Gedit}
 dan simpanlah dengan name \texttt{do\_plot\_sin\_cos.plt}.
@@ -276,6 +279,9 @@ plot "sin_cos.dat" using 1:2 with linespoints title "sin(x)" \
                 "" using 1:3 with linespoints title "cos(x)" \
                    pointtype 7 pointsize 0.5,
 \end{gnuplotcode}
+Anda dapat membaca lebih banyak mengenai arti perintah tersebut pada
+manual \textsf{Gnuplot} yang dapat ditemukan pada laman
+\textsf{Gnuplot} \url{http://gnuplot.sourceforge.net/}.
 
 Panggil \textsf{Gnuplot} untuk menjalankan script \texttt{do\_plot\_sin\_cos.plt}.
 \begin{textcode}
@@ -288,6 +294,10 @@ Hasil plot tersebut dapat dilihat pada gambar berikut.
 \includegraphics[scale=1.0]{sin_cos.pdf}
 \par
 }
+
+Untuk mendapatkan plot yang lebih halus (\textit{smooth}) kita dapat menggunakan
+parameter \texttt{NptsPlot} yang relatif besar misalnya 200 dan disesuaikan juga
+dengan rentang nilai $x$ di mana fungsi diplot.
 
 
 \subsection{Tugas: Plot fungsi eksponensial}
@@ -312,9 +322,12 @@ untuk menghitung eksponensial.
 \subsection{Tugas: Plot fungsi sinc}
 Lakukan sesuai dengan tugas sebelumnya namun untuk fungsi berikut ini:
 \begin{equation}
-f(x) = \frac{\sin(\pi x)}{\pi x}
+f(x) = \mathrm{sinc}(x) = \frac{\sin(\pi x)}{\pi x}
 \end{equation}
-Lakukan dengan menggunakan \texttt{NptsPlot} bilangan ganjil, misalnya 201.
+Buat plot fungsi $\mathrm{sinc}(x)$ pada rentang $-10 < x < 10$
+dan dengan menggunakan \texttt{NptsPlot} bilangan ganjil, misalnya 201.
+Bagaimana dengan nilai $\mathrm{sinc}(x=0)$ ?
+
 
 \section{Tugas/Pekerjaan rumah}
 
@@ -334,18 +347,33 @@ Jika terjadi kesalahan bagaimana cara memperbaikinya ?
   \frac{(-1)^{(n-1)/2}}{n^2}\sin\left( \frac{n\pi x}{L} \right)
   \end{equation}
   %
+  {\centering
+  \includegraphics[scale=0.7]{TEMP_triangle.pdf}
+  \par}
+  %
   \item Gelombang gergaji
   \begin{equation}
   f(x) = \frac{1}{2} - \frac{1}{\pi}\sum_{n=1}^{\infty}
   \frac{1}{n}\sin\left( \frac{n\pi x}{L} \right)
   \end{equation}
   %
+  {\centering
+  \includegraphics[scale=0.7]{TEMP_sawtooth.pdf}
+  \par}
+  %
   \item Gelombang kotak
   \begin{equation}
-  f(x) = \frac{4}{\pi}\sum_{n=1,3,5}^{\infty}
+  f(x) = \frac{4}{\pi}\sum_{n=1,3,5,\ldots}^{\infty}
   \frac{1}{n} \sin\left( \frac{n\pi x}{L} \right)
   \end{equation}
   \end{enumerate}
+  %
+  {\centering
+  \includegraphics[scale=0.7]{TEMP_square.pdf}
+  \par}
+  %
+  Anda dapat mengambil nilai parameter $L = 2.0$ dan
+  menjumlahkan sampai pada 5 suku pertama, misalnya.
 %
 \end{enumerate}
 
