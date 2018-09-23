@@ -28,7 +28,7 @@
 \AfterEndEnvironment{minted}{\end{mdframed}}
 
 \title{
-MI2102\\
+MI2101\\
 Praktikum Teknik Komputasi\\
 Modul 3}
 \author{Fadjar Fathurrahman}
@@ -165,7 +165,65 @@ float hitung_diskriminan(float a, float b, float c)
 \begin{cppcode}
 float hitung_diskriminan(float coef_a, float coef_b, float coef_c);
 \end{cppcode}
-Bagian mana saja yang harus diubah?
+Bagian mana saja yang harus diubah ?
+%
+\item Perhatikan program berikut ini.
+\begin{cppcode}
+#include <iostream>
+
+using namespace std;
+
+void func1(int a, int b);
+void func2(int& a, int& b);
+
+int main()
+{
+  int a = 1, b = 3;
+
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+
+  func1(a, b);
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+ 
+  func2(a, b);
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+  return 0;
+}
+
+void func1(int a, int b)
+{
+  a = 33;
+  b = 44;
+}
+
+void func2(int &a, int &b)
+{
+  a = 99;
+  b = 88;
+}
+\end{cppcode}
+%
+Tuliskan keluaran dari program di atas. Jelaskan apa perbedaan
+antara dua fungsi \texttt{func1} dan \texttt{func2}.
+Apa yang terjadi jika pada fungsi \texttt{main} urutan pemanggilan fungsi
+dibalik ? (\texttt{func2} kemudian baru \texttt{func1}).
+Catatan: fungsi \texttt{func1} disebut menggunakan \textit{pass-by-value}
+dan fungsi \texttt{func2} disebut menggunakan \textit{pass-by-reference}.
+%
+\item Tinjau kembali fungsi untuk mencari akar-akar persamaan kuadrat yang
+telah dibuat pada bagian awal modul ini. Kita akan mempersingkat fungsi
+input yang awalnya berjumlah tiga fungsi, yaitu \texttt{baca\_input\_a},
+\texttt{baca\_input\_b}, dan \texttt{baca\_input\_c} menjadi satu fungsi
+yang dideklarasikan sebagai berikut.
+\begin{cppcode}
+void baca_input(float &a, float &b, float &c);
+\end{cppcode}
+Dengan menggunakan \textit{pass-by-reference}
+buatlah implementasi dari fungsi tersebut dan gunakan dalam
+program perhitungan akar-akar persamaan kuadrat.
 \end{enumerate}
 
 
