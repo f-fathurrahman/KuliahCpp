@@ -4,9 +4,7 @@
 using namespace std;
 
 void selamat_datang();
-float baca_input_a();
-float baca_input_b();
-float baca_input_c();
+void baca_input(float &a, float &b, float &c);
 void tampilkan_abc(float a, float b, float c);
 float hitung_diskriminan(float a, float b, float c);
 void hitung_dan_tampilkan_akar(float a, float b, float c);
@@ -16,9 +14,7 @@ int main()
   selamat_datang();
 
   float a, b, c;
-  a = baca_input_a();
-  b = baca_input_b();
-  c = baca_input_c();
+	baca_input(a, b, c);
 
   tampilkan_abc(a, b, c);
 
@@ -40,9 +36,8 @@ void selamat_datang()
 }
 
 
-float baca_input_a()
+void baca_input(float &a, float &b, float &c)
 {
-  float a;
   for(;;) {
     cout << "Masukkan nilai a: ";
     cin >> a;
@@ -52,24 +47,11 @@ float baca_input_a()
     }
     else break;
   }
-  return a;
-}
 
-float baca_input_b()
-{
-  float b;
   cout << "Masukkan nilai b: ";
   cin >> b;
-  return b;
-}
-
-
-float baca_input_c()
-{
-  float c;
   cout << "Masukkan nilai c: ";
   cin >> c;
-  return c;
 }
 
 void tampilkan_abc(float a, float b, float c)

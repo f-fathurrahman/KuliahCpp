@@ -17,9 +17,9 @@
 \usepackage{xcolor}
 
 \usepackage{minted}
-\newminted{cpp}{breaklines,fontsize=\small}
-\newminted{gnuplot}{breaklines,fontsize=\small}
-\newminted{text}{breaklines,fontsize=\small}
+\newminted{cpp}{breaklines,fontsize=\footnotesize}
+\newminted{gnuplot}{breaklines,fontsize=\footnotesize}
+\newminted{text}{breaklines,fontsize=\footnotesize}
 
 \definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
 \usepackage{mdframed}
@@ -63,9 +63,112 @@ program terdahulu dengan menggunakan fungsi.
 Program lebih panjang daripada program sebelumnya (tanpa menggunakan fungsi)
 karena bertujuan untuk menguji pemahaman Anda tentang fungsi dalam bahasa C++.
 
+\begin{cppcode}
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void selamat_datang();
+float baca_input_a();
+float baca_input_b();
+float baca_input_c();
+void tampilkan_abc(float a, float b, float c);
+float hitung_diskriminan(float a, float b, float c);
+void hitung_dan_tampilkan_akar(float a, float b, float c);
+
+int main()
+{
+  selamat_datang();
+
+  float a, b, c;
+  a = baca_input_a();
+  b = baca_input_b();
+  c = baca_input_c();
+
+  tampilkan_abc(a, b, c);
+
+  hitung_dan_tampilkan_akar(a, b, c);
+  
+  return 0;
+}
+
+void selamat_datang()
+{
+  cout << "Selamat datang" << endl;
+  cout << endl;
+  cout << "Saya adalah program untuk menghitung akar-akar persamaan kuadrat" << endl;
+  cout << endl;
+  cout << "a*x^2 + b*x + c = 0" << endl;
+  cout << endl;
+  cout << "Copyright: Jaka Sembung (2018)" << endl;
+  cout << endl;
+}
+
+float baca_input_a()
+{
+  float a;
+  for(;;) {
+    cout << "Masukkan nilai a: ";
+    cin >> a;
+    if( fabs(a) <= 0 ) {
+      cout << "Nilai yang Anda masukkan tidak valid" << endl;
+      cout << "Mohon masukkan nilai a yang valid (a /= 0)" << endl;
+    }
+    else break;
+  }
+  return a;
+}
+
+// mirip dengan baca_input_a(), namun tanpa pengecekan nilai
+float baca_input_b()
+{...}
+
+float baca_input_c()
+{...}
+
+void tampilkan_abc(float a, float b, float c)
+{
+  cout << endl;
+  cout << "Berikut ini adalah nilai a, b, dan c yang telah saya baca" << endl;
+  cout << endl;
+  cout << "a = " << a << endl;
+  cout << "b = " << b << endl;
+  cout << "c = " << c << endl;
+  cout << endl;
+}
+
+void hitung_dan_tampilkan_akar(float a, float b, float c)
+{
+  ...
+  D = hitung_diskriminan(a,b,c);
+  ...
+  if( D >= 0.0 ) {
+    ...
+  }
+  else {
+    ...
+  }
+}
+
+float hitung_diskriminan(float a, float b, float c)
+{ ... }
+\end{cppcode}
 
 
-\section{Latihan}
+\subsection{Pertanyaan dan tugas}
+
+\begin{enumerate}
+\item Jelaskan fungsi/subprogram yang digunakan pada program.
+\item Sebutkan apa yang menjadi input dan output dari setiap fungsi tersebut.
+\item Misalkan deklarasi fungsi \texttt{hitung\_diskriminan} diubah menjadi
+\begin{cppcode}
+float hitung_diskriminan(float coef_a, float coef_b, float coef_c);
+\end{cppcode}
+Bagian mana saja yang harus diubah?
+\end{enumerate}
+
+
 
 
 
