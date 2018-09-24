@@ -18,8 +18,7 @@ int main()
     for(int n = 1; n <= MaxN; n = n + 1) {
       y = y + sin(n*M_PI*x/L)/n;
     }
-    y = -y/M_PI;
-    y = 0.5 - y;
+    y = 0.5 - y/M_PI;
     printf("%18.10f %18.10f\n", x, y);
 
   }
