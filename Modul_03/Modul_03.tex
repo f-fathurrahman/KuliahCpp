@@ -12,6 +12,7 @@
 
 \usepackage{textcomp}
 
+\usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{xcolor}
@@ -40,6 +41,8 @@ Modul 3}
 \section{Tujuan}
 \begin{itemize}
 \item Mampu membuat program C++ sederhana dengan memanfaatkan subprogram
+\item Mampu membedakan antara \textit{pass-by-value} dan \textit{pass-by-pointer}
+\item Mampu membuat kurva parametrik sederhana (Lissajous)
 \end{itemize}
 
 \section{Perangkat lunak yang diperlukan}
@@ -224,6 +227,32 @@ void baca_input(float &a, float &b, float &c);
 Dengan menggunakan \textit{pass-by-reference}
 buatlah implementasi dari fungsi tersebut dan gunakan dalam
 program perhitungan akar-akar persamaan kuadrat.
+%
+\item Buatlah program seperti pada Modul 2, untuk membuat kurva Lissajous,
+yang didefinisikan oleh persamaan parametrik berikut.
+\begin{align}
+x(t) & = A\sin(at + \phi) \\
+y(t) & = B\cos(bt)
+\end{align}
+dengan $A$, $B$, $a$, $b$, dan $\phi$ adalah parameter.
+Bagian dari program Anda untuk menghitung $x$ dan $y$ dibuat dalam
+sebuat fungsi dengan deklarasi sebagai berikut.
+\begin{cppcode}
+void calc_lissajous(
+  double A, double B, double a, double b, double phi, // parameter
+  double t, // input t
+  double &x, double &y); // output x dan y
+\end{cppcode}
+Hasilkan data $x$ dan $y$ pada selang $0 \leq t \leq 2\pi$
+dan plot kurva yang dihasilkan dengan parameter-parameter berikut.
+\begin{itemize}
+\item $A = 1.0$, $B = 1.0$, $a = 1.0$, $b = 1.0$, $\phi = 0.0$
+\item $A = 1.0$, $B = 1.0$, $a = 1.0$, $b = 2.0$, $\phi = 0.0$
+\item $A = 1.0$, $B = 1.0$, $a = 1.0$, $b = 3.0$, $\phi = 0.0$
+\item $A = 2.0$, $B = 1.0$, $a = 4.0$, $b = 3.0$, $\phi = 0.0$
+\item $A = 2.0$, $B = 1.0$, $a = 4.0$, $b = 3.0$, $\phi = 0.3$
+\end{itemize}
+%
 \end{enumerate}
 
 

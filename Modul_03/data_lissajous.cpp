@@ -14,10 +14,10 @@ void calc_lissajous(
 
 int main()
 {
-  const double A = 1.0;
+  const double A = 2.0;
   const double B = 1.0;
-  const double a = 3.0;
-  const double b = 5.0;
+  const double a = 4.0;
+  const double b = 3.0;
   const double PHI = 0.25*M_PI;
 
   const double t_start = 0.0;
