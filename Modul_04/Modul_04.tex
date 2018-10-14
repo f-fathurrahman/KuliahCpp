@@ -1,0 +1,87 @@
+\documentclass[a4paper,11pt]{extarticle}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+
+\usepackage{fontspec}
+\setmonofont{FreeMono}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.5em}
+
+\usepackage{textcomp}
+
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+
+\usepackage{minted}
+\newminted{cpp}{breaklines,fontsize=\footnotesize}
+\newminted{gnuplot}{breaklines,fontsize=\footnotesize}
+\newminted{text}{breaklines,fontsize=\footnotesize}
+
+\definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
+\usepackage{mdframed}
+
+\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
+\AfterEndEnvironment{minted}{\end{mdframed}}
+
+\title{
+MI2101\\
+Praktikum Teknik Komputasi\\
+Modul 4}
+\author{Fadjar Fathurrahman}
+\date{2018}
+
+\begin{document}
+\maketitle
+
+\section{Tujuan}
+\begin{itemize}
+\item Mampu membuat program C++ sederhana dengan memanfaatkan array
+\end{itemize}
+
+\section{Perangkat lunak yang diperlukan}
+\begin{itemize}
+\item Linux OS
+\item CodeBlocks yang telah dikonfigurasi untuk kompiler GNU C/C++
+\item Terminal emulator dengan \texttt{bash} sebagai shell (baris perintah)
+\item Editor teks seperti \texttt{gedit}
+\end{itemize}
+
+\section{Menghitung rata-rata}
+
+Buatlah program untuk menghitung rata-rata dari nilai yang ada pada
+suatu array. Gunakan fungsi dengan prototip sebagai berikut.
+\begin{cppcode}
+float hitung_rata2( int Ndata, float *data )
+\end{cppcode}
+
+Untuk menguji fungsi yang Anda buat, lengkapi program berikut.
+\begin{cppcode}
+#include <iostream>
+
+using namespace std;
+
+float hitung_rata2( int Ndata, float *data );
+
+int main()
+{
+  const int N = 10;
+
+  float nilai[N] = {40.9, 45.3, 55.3, 55.1, 33.1,
+                    11.7, 34.1, 13.2, 33.3, 34.1};
+  
+  cout << "Nilai rata = " << hitung_rata2(N, nilai) << endl;
+
+  return 0;
+}
+
+float hitung_rata2( int Ndata, float *data )
+{
+  // tuliskan fungsi Anda di sini
+}
+\end{cppcode}
+
+
+\end{document}
