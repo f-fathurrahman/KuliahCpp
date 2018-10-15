@@ -80,15 +80,15 @@ void tampilkan_data(
 )
 {
   cout << endl;
-  cout << "--------------------" << endl;
+  cout << "===========================" << endl;
   cout << "Tampilan data: " << i+1 << endl;
-  cout << "--------------------" << endl;
+  cout << "===========================" << endl;
   cout << "Nama            : " << nama[i] << endl;
   cout << "NIM             : " << NIM[i] << endl;
   cout << "Nilai UTS       : " << uts[i] << endl;
   cout << "Nilai UAS       : " << uas[i] << endl;
   cout << "Nilai praktikum : " << praktikum[i] << endl;
-  cout << "------------------" << endl;
+  cout << "---------------------------" << endl;
   cout << "Nilai akhir     : " << nilai_akhir[i];
   cout << " (" << hitung_nilai_huruf(nilai_akhir[i]) << ")" << endl;
 }
