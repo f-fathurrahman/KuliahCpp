@@ -39,6 +39,7 @@ Modul 4}
 \section{Tujuan}
 \begin{itemize}
 \item Mampu membuat program C++ sederhana dengan memanfaatkan array
+\item Mampu menggunakan \textit{input redirection} pada Linux
 \end{itemize}
 
 \section{Perangkat lunak yang diperlukan}
@@ -171,6 +172,7 @@ void input_data(
     cout << "Masukkan data" << endl;
     
     // handle inputs here ... (nama, nim, uts, uas, praktikum)
+    // gunakan cin
     // ............
   }
 }
@@ -210,6 +212,71 @@ string hitung_nilai_huruf( float nilai_akhir )
   // lengkapi .....
 }
 \end{cppcode}
+
+Untuk pengujian awal, gunakan \texttt{NDATA} kecil, misalnya \texttt{NDATA=2} atau
+\texttt{NDATA=3}, dan pastikan bahwa data yang dimasukkan dan dihitung adalah benar.
+
+Berikut ini adalah contoh keluaran (tanpa tampilan input):
+\begin{textcode}
+===========================
+Tampilan data: 1
+===========================
+Nama            : Joko
+NIM             : A18001
+Nilai UTS       : 80
+Nilai UAS       : 90
+Nilai praktikum : 91
+---------------------------
+Nilai akhir     : 87.4 (AB)
+
+===========================
+Tampilan data: 2
+===========================
+Nama            : Jono
+NIM             : A18002
+Nilai UTS       : 88
+Nilai UAS       : 99
+Nilai praktikum : 90
+---------------------------
+Nilai akhir     : 92.1 (A)
+
+===========================
+Tampilan data: 3
+===========================
+Nama            : Jojo
+NIM             : A18003
+Nilai UTS       : 90
+Nilai UAS       : 99
+Nilai praktikum : 10
+---------------------------
+Nilai akhir     : 60.7 (BC)
+\end{textcode}
+
+Setelah Anda yakin bahwa input Anda benar, uji juga untuk jumlah data yang relatif
+banyak seperti \texttt{NDATA=10}. Pada kasus ini, memasukkan data manual sangat melelahkan.
+Solusi yang dapat kita gunakan adalah dengan menuliskan input ke suatu file.
+File ini adalah file teks biasa yang formatnya disesuaikan dengan kebutuhan program
+kita. Untuk kasus ini pada contoh di atas kita dapat membuat file dengan isi sebagai
+berikut:
+\begin{textcode}
+Joko A18001 80 90 91
+Jono A18002 88 99 90
+Jojo A18003 90 99 10
+\end{textcode}
+Misalkan file yang Anda buat di atas disimpan dengan nama \texttt{input.txt}.
+Dengan menggunakan terminal Anda dapat mengetikkan perintah berikut.
+\begin{textcode}
+./nama_program < input.txt
+\end{textcode}
+Pada Unix/Linux, hal ini dikenal dengan \textit{input redirection}.
+
+\section{Pertanyaan dan tugas}
+
+Pada program sebelumnya, \texttt{NDATA} ditulis pada program
+(\textit{hardwired}). Kembangkan program sebelumnya di mana \texttt{NDATA}
+merupakan input dari pengguna dan array-array terkait dialokasikan secara
+dinamik.
+
 
 
 \end{document}
