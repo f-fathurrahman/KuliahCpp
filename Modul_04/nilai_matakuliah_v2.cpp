@@ -3,18 +3,18 @@
 
 using namespace std;
 
-void input_data(
-  int NDATA,
-  string *nama, string *NIM, float *uts, float *uas, float *praktikum
-);
+struct Mahasiswa {
+  string nama;
+  string NIM;
+  float uts;
+  float uas;
+  float praktikum;
+  float nilai_akhir;
+};
 
+void input_data( int NDATA, Mahasiswa *mahasiswa );
 
-void tampilkan_data(
-  int idata,
-  string *nama, string *NIM, float *uts, float *uas, float *praktikum,
-  float *nilai_akhir
-);
-
+void tampilkan_data( Mahasiswa *mahasiswa );
 
 float hitung_rata2( int Ndata, float *data );
 
@@ -24,6 +24,8 @@ void hitung_nilai_akhir(
   float *nilai_akhir
 );
 
+
+string hitung_nilai_huruf( float nilai_akhir );
 
 int main()
 {
@@ -96,7 +98,8 @@ void tampilkan_data(
   cout << "Nilai UAS       : " << uas[i] << endl;
   cout << "Nilai praktikum : " << praktikum[i] << endl;
   cout << "------------------" << endl;
-  cout << "Nilai akhir     : " << nilai_akhir[i] << endl;
+  cout << "Nilai akhir     : " << nilai_akhir[i];
+  cout << " (" << hitung_nilai_huruf(nilai_akhir[i]) << ")" << endl;
 }
 
 float hitung_rata2( int Ndata, float *data )
@@ -118,3 +121,29 @@ void hitung_nilai_akhir(
     nilai_akhir[i] = 0.3*uts[i] + 0.3*uas[i] + 0.4*praktikum[i];
   }
 }
+
+string hitung_nilai_huruf( float nilai_akhir )
+{
+  if( nilai_akhir <= 50.0 ) {
+    return "E";
+  }
+  else if( nilai_akhir <= 60.0 ) {
+    return "C";
+  }
+  else if( nilai_akhir <= 70 ) {
+    return "BC";
+  }
+  else if( nilai_akhir <= 80 ) {
+    return "B";
+  }
+  else if( nilai_akhir <= 90 ) {
+    return "AB";
+  }
+  else if( nilai_akhir <= 100 ) {
+    return "A";
+  }
+  else {
+    return "NotDefined";
+  }
+}
+

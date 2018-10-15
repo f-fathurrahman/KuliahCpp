@@ -84,4 +84,132 @@ float hitung_rata2( int Ndata, float *data )
 \end{cppcode}
 
 
+\section{Mengolah nilai akhir suatu mata kuliah}
+Anda diberikan tugas untuk membuat program untuk mengolah nilai akhir mahasiswa
+dari suatu mata kuliah. Ada tiga komponen nilai yang akan dihitung, yaitu nilai UTS,
+nilai UAS, dan nilai praktikum. Nilai akhir dihitung dengan persamaan sebagai
+berikut:
+\begin{equation}
+\mathrm{NilaiAkhir} = 0.3\mathrm{NilaiUTS} + 0.3\textrm{NilaiUAS} + 0.4\textrm{NilaiPraktikum}
+\end{equation}
+%
+Selain itu, akan ditentukan juga nilai akhir dalam bentuk huruf, dengan aturan sebagai
+berikut.
+
+{\centering
+\begin{tabular}{|c|c|}
+\hline
+Nilai akhir & Nilai huruf \\
+\hline
+$90 < \mathrm{NilaiAkhir} \leq 100$ & A \\
+$80 < \mathrm{NilaiAkhir} \leq 90$ & AB \\
+$70 < \mathrm{NilaiAkhir} \leq 80$ & B \\
+$60 < \mathrm{NilaiAkhir} \leq 70$ & BC \\
+$50 < \mathrm{NilaiAkhir} \leq 60$ & C \\
+$\mathrm{NilaiAkhir} \leq 50$ & E \\
+\hline
+\end{tabular}
+\par}
+
+
+
+Kode program:
+\begin{cppcode}
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void input_data(
+  int NDATA,
+  string *nama, string *NIM, float *uts, float *uas, float *praktikum
+);
+
+void hitung_nilai_akhir(
+  int Ndata,
+  float *uts, float *uas, float *praktikum,
+  float *nilai_akhir
+);
+
+void tampilkan_data(
+  int idata,
+  string *nama, string *NIM, float *uts, float *uas, float *praktikum,
+  float *nilai_akhir
+);
+
+int main()
+{
+  const int NDATA = 3;
+  
+  string nama[NDATA];
+  string NIM[NDATA];
+  float uts[NDATA], uas[NDATA], praktikum[NDATA];
+  float nilai_akhir[NDATA];
+
+  input_data( NDATA, nama, NIM, uts, uas, praktikum );
+
+  hitung_nilai_akhir( NDATA, uts, uas, praktikum, nilai_akhir );
+
+  for(int i = 0; i < NDATA; i++) {
+    tampilkan_data( i, nama, NIM, uts, uas, praktikum, nilai_akhir );
+  }
+
+  return 0;
+
+}
+
+void input_data(
+  int NDATA,
+  string *nama, string *NIM, float *uts, float *uas, float *praktikum
+)
+{
+  for(int i = 0; i < NDATA; i++) {
+    cout << endl;
+    cout << "---------------" << endl;
+    cout << "Entri data:" << i+1 << endl;
+    cout << "---------------" << endl;
+    cout << "Masukkan data" << endl;
+    
+    // handle inputs here ... (nama, nim, uts, uas, praktikum)
+    // ............
+  }
+}
+
+void tampilkan_data(
+  int i,
+  string *nama, string *NIM, float *uts, float *uas, float *praktikum,
+  float *nilai_akhir
+)
+{
+  cout << endl;
+  cout << "--------------------" << endl;
+  cout << "Tampilan data: " << i+1 << endl;
+  cout << "--------------------" << endl;
+  cout << "Nama            : " << nama[i] << endl;
+  cout << "NIM             : " << NIM[i] << endl;
+  cout << "Nilai UTS       : " << uts[i] << endl;
+  cout << "Nilai UAS       : " << uas[i] << endl;
+  cout << "Nilai praktikum : " << praktikum[i] << endl;
+  cout << "------------------" << endl;
+  cout << "Nilai akhir     : " << nilai_akhir[i];
+  cout << " (" << hitung_nilai_huruf(nilai_akhir[i]) << ")" << endl;
+}
+
+void hitung_nilai_akhir(
+  int Ndata,
+  float *uts, float *uas, float *praktikum,
+  float *nilai_akhir
+)
+{
+  // lengkapi .....
+}
+
+
+string hitung_nilai_huruf( float nilai_akhir )
+{
+  // lengkapi .....
+}
+\end{cppcode}
+
+
 \end{document}
