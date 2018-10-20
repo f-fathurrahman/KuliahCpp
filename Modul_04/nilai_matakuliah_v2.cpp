@@ -3,20 +3,17 @@
 
 using namespace std;
 
-struct Mahasiswa {
-  string nama;
-  string NIM;
-  float uts;
-  float uas;
-  float praktikum;
-  float nilai_akhir;
-};
+void input_data(
+  int NDATA,
+  string *nama, string *NIM, float *uts, float *uas, float *praktikum
+);
 
-void input_data( int NDATA, Mahasiswa *mahasiswa );
 
-void tampilkan_data( Mahasiswa *mahasiswa );
-
-float hitung_rata2( int Ndata, float *data );
+void tampilkan_data(
+  int idata,
+  string *nama, string *NIM, float *uts, float *uas, float *praktikum,
+  float *nilai_akhir
+);
 
 void hitung_nilai_akhir(
   int Ndata,
@@ -24,17 +21,26 @@ void hitung_nilai_akhir(
   float *nilai_akhir
 );
 
-
 string hitung_nilai_huruf( float nilai_akhir );
 
 int main()
 {
-  const int NDATA = 3;
-  
-  string nama[NDATA];
-  string NIM[NDATA];
-  float uts[NDATA], uas[NDATA], praktikum[NDATA];
-  float nilai_akhir[NDATA];
+  int NDATA;
+
+  cout << "Masukkan jumlah data: ";
+  cin >> NDATA;
+
+  string *nama;
+  string *NIM;
+  float *uts, *uas, *praktikum;
+  float *nilai_akhir;
+
+  nama = new string[NDATA];
+  NIM = new string[NDATA];
+  uts = new float[NDATA];
+  uas = new float[NDATA];
+  praktikum = new float[NDATA];
+  nilai_akhir = new float[NDATA];
 
   input_data( NDATA, nama, NIM, uts, uas, praktikum );
 
@@ -44,10 +50,12 @@ int main()
     tampilkan_data( i, nama, NIM, uts, uas, praktikum, nilai_akhir );
   }
 
-  cout << endl;
-  cout << "Rata-rata nilai UTS       = " << hitung_rata2( NDATA, uts ) << endl;
-  cout << "Rata-rata nilai UAS       = " << hitung_rata2( NDATA, uas ) << endl;
-  cout << "Rata-rata nilai praktikum = " << hitung_rata2( NDATA, praktikum ) << endl;
+  delete[] nama;
+  delete[] NIM;
+  delete[] uts;
+  delete[] uas;
+  delete[] praktikum;
+  delete[] nilai_akhir;
 
   return 0;
 
@@ -89,26 +97,17 @@ void tampilkan_data(
 )
 {
   cout << endl;
-  cout << "--------------------" << endl;
+  cout << "===========================" << endl;
   cout << "Tampilan data: " << i+1 << endl;
-  cout << "--------------------" << endl;
+  cout << "===========================" << endl;
   cout << "Nama            : " << nama[i] << endl;
   cout << "NIM             : " << NIM[i] << endl;
   cout << "Nilai UTS       : " << uts[i] << endl;
   cout << "Nilai UAS       : " << uas[i] << endl;
   cout << "Nilai praktikum : " << praktikum[i] << endl;
-  cout << "------------------" << endl;
+  cout << "---------------------------" << endl;
   cout << "Nilai akhir     : " << nilai_akhir[i];
   cout << " (" << hitung_nilai_huruf(nilai_akhir[i]) << ")" << endl;
-}
-
-float hitung_rata2( int Ndata, float *data )
-{
-  float ssum = 0.0;
-  for(int i = 0; i < Ndata; i++) {
-    ssum = ssum + data[i];
-  }
-  return ssum/Ndata;
 }
 
 void hitung_nilai_akhir(

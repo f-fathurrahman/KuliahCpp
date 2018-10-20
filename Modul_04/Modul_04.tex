@@ -277,7 +277,26 @@ Pada program sebelumnya, \texttt{NDATA} ditulis pada program
 merupakan input dari pengguna dan array-array terkait dialokasikan secara
 dinamik.
 
-Petunjuk: gunakan fungsi \texttt{malloc} untuk mengalokasikan memori secara dinamik.
+Petunjuk: gunakan operator \texttt{new} untuk mengalokasikan memori secara dinamik
+serta \texttt{delete[]} untuk dealokasi memori.
+Contoh:
+%
+\begin{cppcode}
+  // Input jumlah data
+  int NDATA;
+  cout << "Masukkan NDATA: ";
+  cin >> NDATA;
+
+  // alokasi data
+  string *nama;
+  nama = new string[NDATA];
+
+  // Lakukan sesuatu dengan array nama
+  // ...
+
+  // dealokasi memori setelah tidak digunakan lagi
+  delete[] nama;
+\end{cppcode}
 
 
 \end{document}
