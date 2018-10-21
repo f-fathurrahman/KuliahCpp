@@ -25,11 +25,17 @@ int main()
 
   info_mahasiswa(a);
 
+  // using initializer list
+  Mahasiswa b;
+  b = {"Johann", "A018004", 81, 70, 65};
+  info_mahasiswa(b);
+
   return 0;
 }
 
 void info_mahasiswa(Mahasiswa m)
 {
+  cout << endl;
   cout << "Nama            : " << m.nama << endl;
   cout << "NIM             : " << m.NIM << endl;
   cout << "Nilai UTS       : " << m.uts << endl;
