@@ -3,7 +3,7 @@
 
 using namespace std;
 
-typedef struct
+struct Mahasiswa
 {
   string nama;
   string NIM;
@@ -11,69 +11,36 @@ typedef struct
   float uas;
   float praktikum;
   float nilai_akhir;
-} Mahasiswa;
+};
 
-void input_data( int NDATA, Mahasiswa *daftar_mhs );
-
-void tampilkan_data( Mahasiswa m );
-
-void hitung_nilai_akhir( Mahasiswa &m );
-
+void info_mahasiswa(Mahasiswa m);
+void hitung_nilai_akhir(Mahasiswa &m);
 string hitung_nilai_huruf( float nilai_akhir );
 
 int main()
 {
-  int NDATA;
+  Mahasiswa a;
+  a.nama = "Jojo";
+  a.NIM = "A018003";
+  a.uts = 80;
+  a.uas = 99;
+  a.praktikum = 78;
+  
+  hitung_nilai_akhir(a);
 
-  cout << "Masukkan jumlah data: ";
-  cin >> NDATA;
+  info_mahasiswa(a);
 
-  Mahasiswa *daftar_mhs;
+  // using initializer list
+  Mahasiswa b;
+  b = {"Johann", "A018004", 81, 70, 65};
 
-  daftar_mhs = new Mahasiswa[NDATA];
-
-  input_data( NDATA, daftar_mhs );
-
-  for(int i = 0; i < NDATA; i++) {
-    hitung_nilai_akhir(daftar_mhs[i]);
-    tampilkan_data(daftar_mhs[i]);
-  }
-
-  delete[] daftar_mhs;
+  hitung_nilai_akhir(b);
+  info_mahasiswa(b);
 
   return 0;
-
 }
 
-void input_data(
-  int NDATA, Mahasiswa *daftar_mhs
-)
-{
-  for(int i = 0; i < NDATA; i++) {
-    cout << endl;
-    cout << "---------------" << endl;
-    cout << "Entri data:" << i+1 << endl;
-    cout << "---------------" << endl;
-    cout << "Masukkan data" << endl;
-    
-    cout << "Nama: ";
-    cin >> daftar_mhs[i].nama;
-    
-    cout << "NIM: ";
-    cin >> daftar_mhs[i].NIM;
-
-    cout << "Nilai UTS: ";
-    cin >> daftar_mhs[i].uts;
-
-    cout << "Nilai UAS: ";
-    cin >> daftar_mhs[i].uas;
-    
-    cout << "Nilai praktikum: ";
-    cin >> daftar_mhs[i].praktikum;
-  }
-}
-
-void tampilkan_data( Mahasiswa m )
+void info_mahasiswa(Mahasiswa m)
 {
   cout << endl;
   cout << "Nama            : " << m.nama << endl;
@@ -86,7 +53,8 @@ void tampilkan_data( Mahasiswa m )
   cout << " (" << hitung_nilai_huruf(m.nilai_akhir) << ")" << endl;
 }
 
-void hitung_nilai_akhir( Mahasiswa &m )
+
+void hitung_nilai_akhir(Mahasiswa &m)
 {
   m.nilai_akhir = 0.3*m.uts + 0.3*m.uas + 0.4*m.praktikum;
 }
@@ -115,4 +83,3 @@ string hitung_nilai_huruf( float nilai_akhir )
     return "NotDefined";
   }
 }
-

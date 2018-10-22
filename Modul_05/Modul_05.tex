@@ -38,8 +38,7 @@ Modul 5}
 
 \section{Tujuan}
 \begin{itemize}
-\item Mampu membuat program C++ sederhana dengan memanfaatkan array
-\item Mampu menggunakan \textit{input redirection} pada Linux
+\item Mampu membuat program C++ sederhana dengan memanfaatkan \texttt{struct}
 \end{itemize}
 
 \section{Perangkat lunak yang diperlukan}
@@ -50,7 +49,242 @@ Modul 5}
 \item Editor teks seperti \texttt{gedit}
 \end{itemize}
 
-\section{Struct}
+\section{Pengenalan \texttt{struct}}
+\texttt{struct} dapat dianggap sebagai tipe data bentukan atau komposit, yang terdiri
+dari beberapa data lain (baik tipe data primitif atau tipe data bentukan lain).
+Sintaks untuk mendeklarasi sebuah \texttt{struct} dalam C++ adalah
+sebagai berikut:
+\begin{cppcode}
+struct NamaStruct {
+  tipeData1 data1;
+  tipeData2 data2;
+  // ... dan seterusnya.
+};
+\end{cppcode}
+
+Kita akan menggunakan masalah dari Modul 4 untuk mempelajari mengenai
+\texttt{struct}.
+
+Pada program berikut ini kita akan mendefisikan sebuah \texttt{struct} dengan
+nama \texttt{Mahasiswa} yang terdiri dari:
+\begin{itemize}
+\item nama mahasiswa
+\item NIM
+\item Nilai UTS
+\item Nilai UAS
+\item Nilai praktikum
+\item Nilai akhir
+\end{itemize}
+Nilai akhir bergantung dari nilai UTS, UAS, dan nilai praktikum sebagaimana
+yang telah diberikan pada Modul 4.
+
+Pada program berikut ini, untuk sementara kita tidak menggunakan nilai akhir.
+
+\begin{cppcode}
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Mahasiswa
+{
+  string nama;
+  string NIM;
+  float uts;
+  float uas;
+  float praktikum;
+};
+
+void info_mahasiswa(Mahasiswa m);
+
+int main()
+{
+  Mahasiswa a;
+  a.nama = "Jojo";
+  a.NIM = "A018003";
+  a.uts = 80;
+  a.uas = 99;
+  a.praktikum = 78;
+
+  info_mahasiswa(a);
+
+  // menggunakan initializer list
+  Mahasiswa b;
+  b = {"Johann", "A018004", 81, 70, 65};
+  info_mahasiswa(b);
+
+  return 0;
+}
+
+void info_mahasiswa(Mahasiswa m)
+{
+  cout << endl;
+  cout << "Nama            : " << m.nama << endl;
+  cout << "NIM             : " << m.NIM << endl;
+  cout << "Nilai UTS       : " << m.uts << endl;
+  cout << "Nilai UAS       : " << m.uas << endl;
+  cout << "Nilai praktikum : " << m.praktikum << endl;
+}
+\end{cppcode}
+
+\subsection*{Pertanyaan dan tugas}
+
+\begin{enumerate}
+%
+\item Tuliskan keluaran dari program.
+%
+\item Jelaskan maksud sintaks berikut.
+\begin{cppcode}
+Mahasiswa a;
+\end{cppcode}
+%
+\item Jelaskan maksud sintaks berikut.
+\begin{cppcode}
+Mahasiswa Jim;
+Jim.nama = "Jim Carey";
+Jim.NIM = "A018099";
+\end{cppcode}
+%
+\item Misalkan Anda hanya memberikan nilai pada \texttt{nama} dan \texttt{NIM}
+kemudian memanggil
+subrutin \texttt{info\_mahasiswa}, apakah yang akan ditampilkan ?
+Bagaimana jika nama dan NIM tidak diberikan?
+%
+\item Misalkan fungsi \texttt{main()} pada program di atas diganti
+sebagai berikut.
+\begin{cppcode}
+int main()
+{
+  Mahasiswa Tom;
+  Tom.nama = "Tom Cruise";
+  Tom.nim = "A018100";
+  Tom.uts = 77;
+  Tom.uas = 66;
+  Tom.praktikum = 55;
+  info_mahasiswa(Mahasiswa a);
+}
+\end{cppcode}
+Apa yang terjadi ? Perbaiki program jika ada kesalahan pada program.
+%
+\item Kembangkan program di atas dengan menambahkan \texttt{nilai\_akhir} pada
+\texttt{struct Mahasiswa} sehingga:
+\begin{cppcode}
+struct Mahasiswa
+{
+  string nama;
+  string NIM;
+  float uts;
+  float uas;
+  float praktikum;
+  float nilai_akhir.
+};
+\end{cppcode}
+%
+Kemudian implementasikan fungsi hitung nilai akhir dengan prototip (deklarasi)
+sebagai berikut. (Gunakan persamaan pada Modul 4 untuk menghitung nilai akhir)
+\begin{cppcode}
+void hitung_nilai_akhir(Mahasiswa &m);
+\end{cppcode}
+Mengapa harus menggunakan \texttt{(Mahasiswa \&m)}?
+%
+Lengkapi juga subrutin \texttt{info\_mahasiswa} sebagai berikut.
+\begin{cppcode}
+void info_mahasiswa(Mahasiswa m)
+{
+  cout << endl;
+  cout << "Nama            : " << m.nama << endl;
+  cout << "NIM             : " << m.NIM << endl;
+  cout << "Nilai UTS       : " << m.uts << endl;
+  cout << "Nilai UAS       : " << m.uas << endl;
+  cout << "Nilai praktikum : " << m.praktikum << endl;
+  cout << "---------------------------" << endl;
+  cout << "Nilai akhir     : " << ....; // isi titik-titk
+  cout << " (" << hitung_nilai_huruf(....) << ")" << endl; // isi titik-titik
+}
+\end{cppcode}
+Gunakan fungsi \texttt{hitung\_nilai\_huruf} seperti pada Modul 4.
+%
+Contoh keluaran program adalah sebagai berikut.
+\begin{textcode}
+Nama            : Jojo
+NIM             : A018003
+Nilai UTS       : 80
+Nilai UAS       : 99
+Nilai praktikum : 78
+---------------------------
+Nilai akhir     : 84.9 (AB)
+
+Nama            : Johann
+NIM             : A018004
+Nilai UTS       : 81
+Nilai UAS       : 70
+Nilai praktikum : 65
+---------------------------
+Nilai akhir     : 71.3 (B)
+\end{textcode}
+\end{enumerate}
+
+
+
+\section{Array dari \texttt{struct}}
+Sebagaimana tipe data primitif, array juga dapat dibangun dari \texttt{struct}.
+
+Contoh program:
+\begin{cppcode}
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Mahasiswa
+{
+  string nama;
+  string NIM;
+  float uts;
+  float uas;
+  float praktikum;
+};
+
+void info_mahasiswa(Mahasiswa a);
+
+int main()
+{
+  int NDATA = 3;
+  Mahasiswa *daftar_mhs;
+
+  daftar_mhs = new Mahasiswa[NDATA];
+
+  daftar_mhs[0].nama = "Jojo";
+  daftar_mhs[0].NIM = "A018003";
+  daftar_mhs[0].uts = 80;
+  daftar_mhs[0].uas = 99;
+  daftar_mhs[0].praktikum = 78;
+  
+  // isi data lain jika diperlukan
+
+  info_mahasiswa(daftar_mhs[0]);
+  info_mahasiswa(daftar_mhs[1]);
+  info_mahasiswa(daftar_mhs[2]);
+
+  delete[] daftar_mhs;
+
+  return 0;
+}
+
+void info_mahasiswa(Mahasiswa m)
+{
+  cout << endl;
+  cout << "Nama            : " << m.nama << endl;
+  cout << "NIM             : " << m.NIM << endl;
+  cout << "Nilai UTS       : " << m.uts << endl;
+  cout << "Nilai UAS       : " << m.uas << endl;
+  cout << "Nilai praktikum : " << m.praktikum << endl;
+}
+\end{cppcode}
+
+\subsection*{Tugas}
+Kembangkan program seperti tugas pada Modul 4 dengan menggunakan \texttt{struct}.
+Anda dapat menambahkan fungsi-fungsi yang lain jika diperlukan.
 
 
 \end{document}
